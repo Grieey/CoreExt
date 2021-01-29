@@ -46,3 +46,12 @@ fun View.invisible() {
 fun View.gone() {
     this.visibility = View.GONE
 }
+
+/**
+ * 点击事件
+ */
+inline fun View.click(crossinline block: (view: View) -> Unit) {
+    setOnClickListener {
+        block(it)
+    }
+}

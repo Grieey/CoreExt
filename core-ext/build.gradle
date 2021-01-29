@@ -53,11 +53,11 @@ android {
 
 dependencies {
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:${androids.kotlin}"
-    api "androidx.core:core-ktx:${androidx.ktx}"
-    api "androidx.appcompat:appcompat:${androidx.appcompat}"
-    api "com.google.android.material:material:${androidx.material}"
-    api "androidx.constraintlayout:constraintlayout:${androidx.constraintlayout}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${androids.kotlin}"
+    implementation "androidx.core:core-ktx:${androidx.ktx}"
+    implementation "androidx.appcompat:appcompat:${androidx.appcompat}"
+    implementation "com.google.android.material:material:${androidx.material}"
+    implementation "androidx.constraintlayout:constraintlayout:${androidx.constraintlayout}"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
