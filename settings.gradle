@@ -1,0 +1,3 @@
+include ':core-ext'
+include ':app'
+rootProject.name = "CoreExt"
