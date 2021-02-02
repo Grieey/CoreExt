@@ -7,3 +7,6 @@ package com.github.grieey.core_ext
  */
 val Double.float: Float
     get() = this.toFloat()
+
+val Double.string: String
+    get() = this.toString()

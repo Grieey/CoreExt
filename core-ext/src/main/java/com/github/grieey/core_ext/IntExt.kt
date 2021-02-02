@@ -20,6 +20,12 @@ val Int.double: Double
     get() = this.toDouble()
 
 /**
+ * string值
+ */
+val Int.string: String
+    get() = this.toString()
+
+/**
  * dp转换为px，结果为px
  */
 val Int.dp: Float
