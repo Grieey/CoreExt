@@ -52,3 +52,13 @@ val Float.sp: Float
  */
 val Float.radians: Double
     get() = Math.toRadians(this.double)
+
+/**
+ * 为null时，返回0
+ */
+fun Float?.orZero() = this ?: 0F
+
+/**
+ * 非正数返回0
+ */
+fun Float?.orPositive() = if (this.orZero() > 0) this as Float else 0F

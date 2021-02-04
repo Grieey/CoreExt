@@ -39,3 +39,13 @@ val Int.sp: Float
 
 
 fun Int.pow(n: Int) = this.double.pow(n).float
+
+/**
+ * 为null时，返回0
+ */
+fun Int?.orZero() = this ?: 0
+
+/**
+ * 非正数返回0
+ */
+fun Int?.orPositive() = if (this.orZero() > 0) this as Int else 0
