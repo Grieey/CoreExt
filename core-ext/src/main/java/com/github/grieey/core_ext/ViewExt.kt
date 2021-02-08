@@ -9,21 +9,21 @@ import android.view.View
  */
 
 /**
- * 是否可见
+ * 是否已经可见
  */
-val View.visible: Boolean
+val View.visibled: Boolean
     get() = this.visibility == View.VISIBLE
 
 /**
- * 是否不可见
+ * 是否已经不可见
  */
-val View.invisible: Boolean
+val View.invisibled: Boolean
     get() = this.visibility == View.INVISIBLE
 
 /**
- * 是否隐藏
+ * 是否已经隐藏
  */
-val View.gone: Boolean
+val View.goned: Boolean
     get() = this.visibility == View.GONE
 
 /**
