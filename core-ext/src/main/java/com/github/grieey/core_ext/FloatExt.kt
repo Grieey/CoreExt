@@ -22,6 +22,12 @@ val Float.double: Double
     get() = this.toDouble()
 
 /**
+ * long值
+ */
+val Float.long: Long
+    get() = this.toLong()
+
+/**
  * string值
  */
 val Float.string: String
