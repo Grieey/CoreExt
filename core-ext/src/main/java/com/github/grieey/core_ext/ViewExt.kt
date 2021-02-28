@@ -55,3 +55,13 @@ inline fun View.click(crossinline block: (view: View) -> Unit) {
         block(it)
     }
 }
+
+/**
+ * 设置view的宽高，单位px
+ */
+fun View.setWidthAndHeightInPx(newWidth: Int? = null, newHeight: Int? = null) {
+    layoutParams.apply {
+        width = newWidth ?: width
+        height = newHeight ?: height
+    }
+}
