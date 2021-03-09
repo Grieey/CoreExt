@@ -1,6 +1,7 @@
 package com.github.grieey.core_ext
 
 import android.view.View
+import android.view.ViewGroup
 
 /**
  * description: view 相关的扩展
@@ -60,8 +61,15 @@ inline fun View.click(crossinline block: (view: View) -> Unit) {
  * 设置view的宽高，单位px
  */
 fun View.setWidthAndHeightInPx(newWidth: Int? = null, newHeight: Int? = null) {
-    layoutParams = layoutParams.apply {
+    applyParams<ViewGroup.LayoutParams> {
         width = newWidth ?: width
         height = newHeight ?: height
     }
+}
+
+/**
+ * 设置layoutParams
+ */
+inline fun <reified T : ViewGroup.LayoutParams> View.applyParams(block: T.() -> Unit) {
+    layoutParams = (layoutParams as? T)?.apply(block) ?: layoutParams
 }
