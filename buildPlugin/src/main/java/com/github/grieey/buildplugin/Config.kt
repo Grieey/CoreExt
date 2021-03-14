@@ -8,6 +8,9 @@ import org.gradle.api.JavaVersion
  * @author: Grieey
  */
 object Config {
+
+    val applicationId = "com.github.grieey.coreext"
+
     const val isDebugLocalLib = true
     const val compileSdkVersion = 30
     const val buildToolsVersion = "30.0.3"

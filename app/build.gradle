@@ -11,7 +11,7 @@ android {
   buildToolsVersion Config.buildToolsVersion
 
   defaultConfig {
-    applicationId "com.github.grieey.coreext"
+    applicationId Config.applicationId
     minSdkVersion 23
     targetSdkVersion 30
     versionCode 1
