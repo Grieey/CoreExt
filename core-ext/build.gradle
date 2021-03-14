@@ -1,7 +1,10 @@
+import com.github.grieey.buildplugin.*
+
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'com.github.dcendents.android-maven'
+    id 'com.github.grieey.build-plugin'
 }
 
 group = 'com.github.grieey'
@@ -23,17 +26,15 @@ ext {
     libraryDescription = 'Extensions base on kotlin standard lib and Android support lib'
 }
 
-apply from: '../deploy.gradle'
-
 android {
-    compileSdkVersion androids.compileSdkVersion
-    buildToolsVersion androids.buildToolsVersion
+    compileSdkVersion Config.compileSdkVersion
+    buildToolsVersion Config.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion androids.minSdkVersion
-        targetSdkVersion androids.compileSdkVersion
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -46,24 +47,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility androids.javaSourceCompatibility
-        targetCompatibility androids.javaSourceCompatibility
+        sourceCompatibility Config.javaSourceCompatibility
+        targetCompatibility Config.javaSourceCompatibility
     }
     kotlinOptions {
-        jvmTarget = androids.jvm
+        jvmTarget = Config.jvmTarget
     }
 }
 
 dependencies {
+    implementation Deps.kotinStdlib
+    implementation Deps.Androidx.appcompat
+    implementation Deps.Androidx.ktx
+    implementation Deps.Androidx.constraintlayout
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${androids.kotlin}"
-    implementation "androidx.core:core-ktx:${androidx.ktx}"
-    implementation "androidx.appcompat:appcompat:${androidx.appcompat}"
-    implementation "com.google.android.material:material:${androidx.material}"
-    implementation "androidx.constraintlayout:constraintlayout:${androidx.constraintlayout}"
+    implementation Deps.Google.material
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation Deps.Androidx.junit
+    androidTestImplementation Deps.Androidx.espressoCore
 }
 
