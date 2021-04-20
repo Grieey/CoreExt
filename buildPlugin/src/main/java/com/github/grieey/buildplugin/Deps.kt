@@ -23,6 +23,7 @@ object Deps {
 
     object Google {
         val material = "com.google.android.material:material:1.2.1"
+        val gson = "com.google.code.gson:gson:2.8.6"
     }
 
     object Core {

@@ -62,7 +62,7 @@ dependencies {
     implementation Deps.Androidx.constraintlayout
 
     implementation Deps.Google.material
-
+    implementation Deps.Google.gson
     androidTestImplementation Deps.Androidx.junit
     androidTestImplementation Deps.Androidx.espressoCore
 }
