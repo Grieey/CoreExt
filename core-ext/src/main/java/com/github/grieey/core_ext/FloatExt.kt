@@ -2,6 +2,9 @@ package com.github.grieey.core_ext
 
 import android.content.res.Resources
 import android.util.TypedValue
+import java.lang.StringBuilder
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 /**
  * description: float 的扩展
@@ -68,3 +71,16 @@ fun Float?.orZero() = this ?: 0F
  * 非正数返回0
  */
 fun Float?.orPositive() = if (this.orZero() > 0) this as Float else 0F
+
+/**
+ * 小数点保留位置格式化
+ * @param digits 保留位数
+ */
+fun Float.format(digits: Int = 2): String {
+    val builder = StringBuilder()
+    for (i in 0 until digits) builder.append("#")
+    val format = DecimalFormat("0.$builder")
+    //未保留小数的舍弃规则，RoundingMode.FLOOR表示直接舍弃。
+    format.roundingMode = RoundingMode.FLOOR
+    return format.format(this)
+}

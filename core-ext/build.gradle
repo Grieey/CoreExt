@@ -63,6 +63,7 @@ dependencies {
 
     implementation Deps.Google.material
     implementation Deps.Google.gson
+    testImplementation(Deps.Test.junit)
     androidTestImplementation Deps.Androidx.junit
     androidTestImplementation Deps.Androidx.espressoCore
 }
