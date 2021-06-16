@@ -1,5 +1,6 @@
 package com.github.grieey.core_ext
 
+import android.util.Size
 import android.view.View
 import android.view.ViewGroup
 
@@ -72,4 +73,54 @@ fun View.setWidthAndHeightInPx(newWidth: Int? = null, newHeight: Int? = null) {
  */
 inline fun <reified T : ViewGroup.LayoutParams> View.applyParams(block: T.() -> Unit) {
     layoutParams = (layoutParams as? T)?.apply(block) ?: layoutParams
+}
+
+/**
+ * size 的宽高比
+ */
+fun Size.ratio() = width * 1F / height
+
+/**
+ * 尺寸适配
+ * @param max 需要适配的目标尺寸
+ * @return 适配后的尺寸，保持宽高比然后返回max顶高或者顶宽的尺寸
+ */
+infix fun Size.adjust(max: Size): Size {
+    var resultWidth: Int? = null
+    var resultHeight: Int? = null
+
+    val ratioWidth = max.width * 1F / width
+    val ratioHeight = max.height * 1F / height
+
+    val scaleInBigRatio = {
+        if (ratioWidth < ratioHeight) {
+            // 宽的比率大，以宽的比率来缩放
+            resultWidth = max.width
+            resultHeight = (height * ratioWidth).toInt()
+        } else {
+            resultWidth = (max.width * ratioHeight).toInt()
+            resultHeight = max.height
+        }
+    }
+
+    when {
+        width >= max.width && height >= max.height -> {
+            scaleInBigRatio()
+        }
+        width >= max.width -> {
+            // 以宽的比率来缩放
+            resultWidth = max.width
+            resultHeight = (max.height * ratioWidth).toInt()
+        }
+
+        height >= max.height -> {
+            // 以高的比率来缩放
+            resultWidth = (max.width * ratioHeight).toInt()
+            resultHeight = max.height
+        }
+        else -> {
+            scaleInBigRatio()
+        }
+    }
+    return Size(resultWidth ?: 0, resultHeight ?: 0)
 }
